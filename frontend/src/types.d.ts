@@ -8,6 +8,7 @@ export interface User {
   _id: string;
   username: string;
   displayUsername: string;
+  phone: string;
   token: string;
 }
 
