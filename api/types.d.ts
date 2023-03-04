@@ -5,3 +5,8 @@ export interface IUser {
   password: string;
   token: string;
 }
+
+export interface ICategory {
+  _id: Type.ObjectId;
+  title: string;
+}
