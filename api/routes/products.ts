@@ -12,7 +12,7 @@ productsRouter.post('/', auth, imagesUpload.single('image'), async (req, res, ne
   try {
     const user = (req as RequestWithUser).user;
 
-    if(!req.file || !req.body.title || !req.body.description || !req.body.price || !req.body.category) {
+    if (!req.file || !req.body.title || !req.body.description || !req.body.price || !req.body.category) {
       return res.status(500).send({message: "all fields are required!"})
     }
 
@@ -45,19 +45,43 @@ productsRouter.get('/', async (req, res) => {
 
     if (queryCategory) {
       const sortedProducts = await Product.find({category: queryCategory})
-        .populate({ path: 'customer', select: ['displayUsername', 'phone'] });
+        .populate({path: 'customer', select: ['displayUsername', 'phone']});
       return res.send(sortedProducts);
     }
     const products = await Product.find()
-      .populate({ path: 'customer', select: ['displayUsername', 'phone'] })
-      .populate({ path: 'category', select: 'title' });
+      .populate({path: 'customer', select: ['displayUsername', 'phone']})
+      .populate({path: 'category', select: 'title'});
     return res.send(products);
   } catch {
     return res.sendStatus(500);
   }
 });
 
+productsRouter.delete('/:id', auth, async (req, res, next) => {
+  try {
+    const user = (req as RequestWithUser).user;
 
+    const productId = req.params.id;
+    const productById = await Product.findById(productId);
+    if (!productById) {
+      return res.status(500).send({error: 'Product not found!'});
+    }
+
+    const product = await Product.findOne({_id: productId, customer: user._id});
+
+    if (!product) {
+      return res.status(403).send({error: 'Access for deleting denied!'});
+    }
+    const deletedProduct = await product.deleteOne();
+
+    res.send({message: 'Product deleted', deletedProduct})
+  } catch (e) {
+    if (e instanceof mongoose.Error.ValidationError) {
+      return res.status(400).send(e);
+    }
+    return next(e);
+  }
+});
 
 
 export default productsRouter;
