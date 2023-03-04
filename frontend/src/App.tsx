@@ -5,6 +5,7 @@ import AppToolbar from './components/UI/AppToolbar/AppToolbar';
 import Login from './features/users/Login';
 import Register from "./features/users/Register";
 import Products from "./features/products/Products";
+import OneProduct from "./features/products/OneProduct";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
             <Route path="/register" element={<Register/>} />
             <Route path="/" element={<Products/>} />
             <Route path="/category/:id" element={<Products/>}/>
+            <Route path="/products/:id" element={<OneProduct/>}/>
             <Route path="*" element={
               (<Typography variant="h3" fontWeight="bold" textAlign="center" mt={5}>Page not found!</Typography>)
             }/>

@@ -50,3 +50,16 @@ export interface Category {
   _id: string;
   title: string;
 }
+
+export interface FullProduct extends Product {
+  customer: {
+    _id: string;
+    displayUsername: string;
+    phone: string;
+  },
+  category: {
+    _id: string;
+    title: string;
+  },
+  description: string;
+}
