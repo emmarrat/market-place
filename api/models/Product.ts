@@ -42,7 +42,7 @@ const ProductSchema = new Schema({
   }
 });
 
-const Post = mongoose.model('Post', ProductSchema);
+const Product = mongoose.model('Product', ProductSchema);
 
-export default Post;
+export default Product;
 
