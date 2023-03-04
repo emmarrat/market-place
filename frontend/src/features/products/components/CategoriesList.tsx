@@ -23,8 +23,11 @@ const CategoriesList: React.FC<Props> = ({categories}) => {
         </ListItem>
       </ListItemButton>
       {categories.map((category) => (
-        <ListItemButton component={CategoryLink} to={`/category/${category._id}`} sx={{color: 'inherit'}}
-                        key={category._id}>
+        <ListItemButton
+          component={CategoryLink}
+          to={`/category/${category._id}`}
+          sx={{color: 'inherit'}}
+          key={category._id}>
           <ListItem>
             <ListItemIcon>
               <LabelIcon/>

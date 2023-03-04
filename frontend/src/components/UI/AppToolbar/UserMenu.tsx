@@ -28,7 +28,6 @@ const UserMenu: React.FC<Props> = ({user}) => {
   };
 
   return (
-
   <>
     {loading ? <CircularProgress/> : <Button
       onClick={handleClick}

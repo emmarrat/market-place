@@ -26,20 +26,49 @@ const Products = () => {
 
   const category = categories.find((category) => {
     return category._id === id;
-  })
+  });
+
+  let content = (
+    <>
+      {products.map((product) => (
+        <Grid item width="25%" key={product._id}>
+          <ProductCard product={product}/>
+        </Grid>
+      ))}
+    </>
+  );
+
+  if (fetchLoading) {
+    content = (<CircularProgress color="inherit" sx={{mt: 5}}/>)
+  }
+  if (products.length === 0) {
+    content = (<Typography variant="h5" mb={4} fontWeight="bold" textAlign="center">No products</Typography>)
+  }
 
   return (
-    <> <Typography variant="h5" mb={4} fontWeight="bold" textAlign="center">{category ? category.title + ':' : "All products:"}</Typography>
+    <>
+      <Typography
+        variant="h5"
+        mb={4}
+        fontWeight="bold"
+        textAlign="center"
+      >
+        {category ? category.title + ':' : 'All products:'}
+      </Typography>
       <Grid container justifyContent="space-between">
         <Grid item container xs={12} md={2}>
           <CategoriesList categories={categories}/>
         </Grid>
-        <Grid item container alignItems="center" flexWrap="wrap" justifyContent="center" spacing={3} xs={12} md={10}>
-          {fetchLoading ? <CircularProgress color="inherit" sx={{mt: 5}}/> : products.map((product) => (
-            <Grid item width="25%" key={product._id}>
-              <ProductCard product={product}/>
-            </Grid>
-          ))}
+        <Grid
+          item
+          container
+          alignItems="center"
+          flexWrap="wrap"
+          justifyContent="center"
+          spacing={3}
+          xs={12} md={10}
+        >
+          {content}
         </Grid>
       </Grid>
     </>

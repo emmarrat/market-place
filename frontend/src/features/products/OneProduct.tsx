@@ -62,14 +62,15 @@ const OneProduct = () => {
             phone: <b> {product.customer.phone}</b>
           </Typography>
         </Grid>
-        <Grid item container justifyContent="center" >
-          {user?._id === product.customer._id && <LoadingButton
-            color="error"
-            variant="contained"
-            loading={deleteLoading ? deleteLoading === product._id : false}
-            onClick={() => deleteOneProduct(product._id)}
-          >
-            <span>Delete</span>
+        <Grid item container justifyContent="center">
+          {user?._id === product.customer._id &&
+            <LoadingButton
+              color="error"
+              variant="contained"
+              loading={deleteLoading ? deleteLoading === product._id : false}
+              onClick={() => deleteOneProduct(product._id)}
+            >
+              <span>Delete</span>
             </LoadingButton>}
         </Grid>
       </>)}
