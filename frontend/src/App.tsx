@@ -19,6 +19,7 @@ const App = () => {
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<Register/>} />
             <Route path="/" element={<Products/>} />
+            <Route path="/category/:id" element={<Products/>}/>
             <Route path="*" element={
               (<Typography variant="h3" fontWeight="bold" textAlign="center" mt={5}>Page not found!</Typography>)
             }/>
