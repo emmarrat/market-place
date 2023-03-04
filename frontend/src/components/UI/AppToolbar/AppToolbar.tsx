@@ -5,6 +5,7 @@ import { useAppSelector } from '../../../app/hooks';
 import { selectUser } from '../../../features/users/usersSlice';
 import UserMenu from './UserMenu';
 import AnonymousMenu from './AnonymousMenu';
+import LocalMallRoundedIcon from '@mui/icons-material/LocalMallRounded';
 
 const Link = styled(NavLink)({
   color: 'inherit',
@@ -22,7 +23,16 @@ const AppToolbar = () => {
       <Toolbar>
         <Grid container justifyContent="space-between" alignItems="center">
           <Typography variant="h6" component="div">
-            <Link to="/" sx={{display: 'flex', alignItems: 'center'}}>Exam 11
+            <Link to="/" sx={{display: 'flex', alignItems: 'center'}}>JS-17's market place
+              <div style={{
+                borderRadius: '50%',
+                width: '32px', height: '32px',
+                backgroundColor: '#7ba5f1',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                marginLeft: '10px'
+              }}>
+                <LocalMallRoundedIcon fontSize="medium"/>
+              </div>
             </Link>
           </Typography>
           <Grid item>
