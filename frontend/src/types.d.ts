@@ -2,6 +2,7 @@ export interface RegisterMutation {
   username: string;
   password: string;
   displayUsername: string;
+  phone: string;
 }
 
 export interface User {
