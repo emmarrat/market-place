@@ -29,7 +29,7 @@ const OneProduct = () => {
   };
 
   return (
-    <Grid mt={5}>
+    <Grid mt={5} container justifyContent="center">
       {loading ? <CircularProgress/> : product && (<>
         <Grid container justifyContent="space-evenly" mb={4}>
           <Grid item boxShadow="0px 0px 8px 5px #BEBEBE" padding={3} borderRadius={7} width={400}>
