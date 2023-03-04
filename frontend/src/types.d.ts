@@ -63,3 +63,15 @@ export interface FullProduct extends Product {
   },
   description: string;
 }
+
+export interface ProductMutation {
+  category: string;
+  title: string;
+  price: number;
+  image: File | null;
+  description: string;
+}
+
+export interface ProductToData  extends ProductMutation{
+  price: string;
+}

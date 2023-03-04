@@ -49,6 +49,7 @@ const FileInput: React.FC<Props> = ({onChange, name, label, type, errorCheck}) =
             onClick={activateInput}
             error={Boolean(errorCheck('image'))}
             helperText={errorCheck('image')}
+            required
           />
         </Grid>
         <Grid item>

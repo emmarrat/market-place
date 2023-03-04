@@ -12,17 +12,13 @@ productsRouter.post('/', auth, imagesUpload.single('image'), async (req, res, ne
   try {
     const user = (req as RequestWithUser).user;
 
-    if (!req.file || !req.body.title || !req.body.description || !req.body.price || !req.body.category) {
-      return res.status(500).send({message: "all fields are required!"})
-    }
-
     const productData: IProduct = {
       customer: user._id,
       category: req.body.category,
       title: req.body.title,
       description: req.body.description,
       price: req.body.price,
-      image: req.file.filename,
+      image: req.file ? req.file.filename : null,
     };
 
     const product = new Product(productData);

@@ -1,6 +1,12 @@
-import { Category, FullProduct, Product } from '../../types';
+import { Category, FullProduct, Product, ValidationError } from '../../types';
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCategories, fetchOneProduct, fetchProducts, fetchProductsByCategory } from './productsThunks';
+import {
+  createProduct,
+  fetchCategories,
+  fetchOneProduct,
+  fetchProducts,
+  fetchProductsByCategory
+} from './productsThunks';
 import { RootState } from '../../app/store';
 
 export interface ProductsState {
@@ -8,6 +14,8 @@ export interface ProductsState {
   oneItem: FullProduct | null;
   categories: Category[],
   productsFetchLoading: boolean;
+  productCreatingLoading: boolean;
+  validationError: ValidationError | null;
 }
 
 const initialState: ProductsState = {
@@ -15,6 +23,8 @@ const initialState: ProductsState = {
   oneItem: null,
   categories: [],
   productsFetchLoading: false,
+  productCreatingLoading: false,
+  validationError: null,
 }
 
 export const productsSlice = createSlice({
@@ -65,6 +75,17 @@ export const productsSlice = createSlice({
     builder.addCase(fetchOneProduct.rejected, (state) => {
       state.productsFetchLoading = false;
     });
+    builder.addCase(createProduct.pending, (state) => {
+      state.validationError = null;
+      state.productCreatingLoading = true;
+    });
+    builder.addCase(createProduct.fulfilled, (state) => {
+      state.productCreatingLoading = false;
+    });
+    builder.addCase(createProduct.rejected, (state, {payload: error}) => {
+      state.validationError = error || null;
+      state.productCreatingLoading = false;
+    });
   }
 });
 
@@ -74,3 +95,6 @@ export const selectProducts = (state: RootState) => state.products.items;
 export const selectOneProduct = (state: RootState) => state.products.oneItem;
 export const selectCategories = (state: RootState) => state.products.categories;
 export const selectProductsFetchLoading = (state: RootState) => state.products.productsFetchLoading;
+export const selectValidationError = (state: RootState) => state.products.validationError;
+export const selectProductCreatingLoading = (state: RootState) => state.products.productCreatingLoading;
+
