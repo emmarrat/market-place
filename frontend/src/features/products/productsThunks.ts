@@ -68,6 +68,7 @@ export const createProduct = createAsyncThunk<void, ProductToData, { rejectValue
     }
   }
 );
+
 export const deleteProduct = createAsyncThunk<void, string, { state: RootState }>(
   'products/delete',
   async (productId, {getState}) => {
