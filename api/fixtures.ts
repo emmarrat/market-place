@@ -3,6 +3,7 @@ import config from "./config";
 import crypto from "crypto";
 import User from "./models/User";
 import Category from "./models/Category";
+import Product from "./models/Product";
 
 
 const run = async () => {
@@ -13,6 +14,7 @@ const run = async () => {
   try {
     await db.dropCollection('users');
     await db.dropCollection('categories');
+    await db.dropCollection('products');
   } catch (e) {
     console.log('Collections were not present, skipping drop...');
   }
@@ -38,6 +40,50 @@ const run = async () => {
   },{
     title: "Accessories"
   });
+
+  await Product.create({
+    customer: user1,
+    category: cat1,
+    title: "Iphone 14",
+    description: "Color: white, Memory: 256gb",
+    price: 870,
+    image: "fixtures/iphone14.jpg"
+  }, {
+    customer: user2,
+    category: cat1,
+    title: "Iphone 14 Pro",
+    description: "Color: gold, Memory: 1tb",
+    price: 1100,
+    image: "fixtures/iphone14pro.jpg"
+  }, {
+    customer: user1,
+    category: cat2,
+    title: "MacBook Air 2020",
+    description: "Color: gold, Memory: 512gb, chip: M1",
+    price: 900,
+    image: "fixtures/macbookair.jpg"
+  }, {
+    customer: user1,
+    category: cat2,
+    title: "MacBook Pro 2022",
+    description: "Color: space-gray, Memory: 2tb, chip: M2",
+    price: 1750,
+    image: "fixtures/macbookprom2.jpg"
+  }, {
+    customer: user2,
+    category: cat3,
+    title: "Magic mouse",
+    description: "Color: gray",
+    price: 100,
+    image: "fixtures/magicmouse.jpg"
+  }, {
+    customer: user2,
+    category: cat3,
+    title: "Magic keyboard",
+    description: "Color: gray",
+    price: 250,
+    image: "fixtures/magickeyboard.jpg"
+  })
 };
 
   void run();
