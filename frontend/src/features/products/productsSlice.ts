@@ -1,9 +1,9 @@
-import {Category, FullProduct, Product} from "../../types";
-import {createSlice} from "@reduxjs/toolkit";
-import {fetchCategories, fetchOneProduct, fetchProducts, fetchProductsByCategory} from "./productsThunks";
-import {RootState} from "../../app/store";
+import { Category, FullProduct, Product } from '../../types';
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchCategories, fetchOneProduct, fetchProducts, fetchProductsByCategory } from './productsThunks';
+import { RootState } from '../../app/store';
 
-export interface ProductsState{
+export interface ProductsState {
   items: Product[];
   oneItem: FullProduct | null;
   categories: Category[],

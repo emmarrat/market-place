@@ -1,12 +1,12 @@
-import React, {useState} from 'react';
-import {Link as RouterLink, useNavigate} from 'react-router-dom';
-import {LoginMutation} from '../../types';
-import {Alert, Avatar, Box, Container, Grid, Link, TextField, Typography} from '@mui/material';
+import React, { useState } from 'react';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { LoginMutation } from '../../types';
+import { Alert, Avatar, Box, Container, Grid, Link, TextField, Typography } from '@mui/material';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
-import {useAppDispatch, useAppSelector} from '../../app/hooks';
-import {selectLoginError, selectLoginLoading} from './usersSlice';
-import {login} from './usersThunks';
-import LoadingButton from "@mui/lab/LoadingButton";
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { selectLoginError, selectLoginLoading } from './usersSlice';
+import { login } from './usersThunks';
+import LoadingButton from '@mui/lab/LoadingButton';
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -46,7 +46,7 @@ const Login = () => {
           Sign in
         </Typography>
         {error && (
-          <Alert severity="error" sx={{mt:3, width: '100%'}}>
+          <Alert severity="error" sx={{mt: 3, width: '100%'}}>
             {error.error}
           </Alert>
         )}

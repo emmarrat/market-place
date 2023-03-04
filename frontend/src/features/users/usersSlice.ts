@@ -1,7 +1,7 @@
-import {GlobalError, User, ValidationError} from "../../types";
-import {createSlice} from "@reduxjs/toolkit";
-import {RootState} from "../../app/store";
-import {login, logout, register} from "./usersThunks";
+import { GlobalError, User, ValidationError } from '../../types';
+import { createSlice } from '@reduxjs/toolkit';
+import { RootState } from '../../app/store';
+import { login, logout, register } from './usersThunks';
 
 interface UsersState {
   user: User | null;
@@ -23,7 +23,7 @@ const initialState: UsersState = {
 export const usersSlice = createSlice({
   name: 'users',
   initialState,
-  reducers:  {
+  reducers: {
     unsetUser: (state) => {
       state.user = null;
     }
@@ -73,4 +73,4 @@ export const selectRegisterLoading = (state: RootState) => state.users.registerL
 export const selectRegisterError = (state: RootState) => state.users.registerError;
 export const selectLoginLoading = (state: RootState) => state.users.loginLoading;
 export const selectLoginError = (state: RootState) => state.users.loginError;
-export const selectLogoutLoading  = (state: RootState) => state.users.logoutLoading;
+export const selectLogoutLoading = (state: RootState) => state.users.logoutLoading;

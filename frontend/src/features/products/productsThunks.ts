@@ -1,6 +1,6 @@
-import {createAsyncThunk} from "@reduxjs/toolkit";
-import {Category, FullProduct, Product} from "../../types";
-import axiosApi from "../../axiosApi";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { Category, FullProduct, Product } from '../../types';
+import axiosApi from '../../axiosApi';
 
 export const fetchProducts = createAsyncThunk<Product[]>(
   'products/fetchAll',

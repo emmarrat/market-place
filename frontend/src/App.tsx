@@ -1,11 +1,11 @@
 import React from 'react';
-import {Route, Routes} from 'react-router-dom';
-import {Container, CssBaseline, Typography} from '@mui/material';
+import { Route, Routes } from 'react-router-dom';
+import { Container, CssBaseline, Typography } from '@mui/material';
 import AppToolbar from './components/UI/AppToolbar/AppToolbar';
 import Login from './features/users/Login';
-import Register from "./features/users/Register";
-import Products from "./features/products/Products";
-import OneProduct from "./features/products/OneProduct";
+import Register from './features/users/Register';
+import Products from './features/products/Products';
+import OneProduct from './features/products/OneProduct';
 
 const App = () => {
   return (
@@ -18,8 +18,8 @@ const App = () => {
         <Container maxWidth="xl">
           <Routes>
             <Route path="/login" element={<Login/>}/>
-            <Route path="/register" element={<Register/>} />
-            <Route path="/" element={<Products/>} />
+            <Route path="/register" element={<Register/>}/>
+            <Route path="/" element={<Products/>}/>
             <Route path="/category/:id" element={<Products/>}/>
             <Route path="/products/:id" element={<OneProduct/>}/>
             <Route path="*" element={

@@ -18,7 +18,7 @@ const AppToolbar = () => {
   const user = useAppSelector(selectUser);
 
   return (
-    <AppBar position="sticky" sx={{mb: 2, backgroundColor: '#344955'}}>
+    <AppBar position="sticky" sx={{mb: 5, backgroundColor: '#344955'}}>
       <Toolbar>
         <Grid container justifyContent="space-between" alignItems="center">
           <Typography variant="h6" component="div">
@@ -26,7 +26,7 @@ const AppToolbar = () => {
             </Link>
           </Typography>
           <Grid item>
-            {user ? (<UserMenu user={user}/> ): (<AnonymousMenu/>)}
+            {user ? (<UserMenu user={user}/>) : (<AnonymousMenu/>)}
           </Grid>
         </Grid>
       </Toolbar>
