@@ -38,3 +38,10 @@ export interface LoginMutation {
 export interface GlobalError {
   error: string;
 }
+
+export interface Product {
+  _id: string;
+  title: string;
+  price: number;
+  image: string;
+}
