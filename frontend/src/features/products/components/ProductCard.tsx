@@ -12,9 +12,10 @@ interface Props {
 const ProductCard: React.FC<Props> = ({product}) => {
 
   return (
-    <Card sx={{maxWidth: 330}}>
+    <Card>
       <CardActionArea component={NavLink} to={`/products/${product._id}`}>
         <CardMedia
+          width="100%"
           component="img"
           height="330"
           image={apiURL + '/' + product.image}

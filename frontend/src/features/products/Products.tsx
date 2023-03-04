@@ -31,7 +31,7 @@ const Products = () => {
   let content = (
     <>
       {products.map((product) => (
-        <Grid item width="25%" key={product._id}>
+        <Grid item width="33.333%" key={product._id}>
           <ProductCard product={product}/>
         </Grid>
       ))}
@@ -56,7 +56,7 @@ const Products = () => {
         {category ? category.title + ':' : 'All products:'}
       </Typography>
       <Grid container justifyContent="space-between">
-        <Grid item container xs={12} md={2}>
+        <Grid item container xs={12} md={3}>
           <CategoriesList categories={categories}/>
         </Grid>
         <Grid
@@ -66,7 +66,7 @@ const Products = () => {
           flexWrap="wrap"
           justifyContent="center"
           spacing={3}
-          xs={12} md={10}
+          xs={12} md={9}
         >
           {content}
         </Grid>
