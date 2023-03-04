@@ -45,3 +45,8 @@ export interface Product {
   price: number;
   image: string;
 }
+
+export interface Category {
+  _id: string;
+  title: string;
+}

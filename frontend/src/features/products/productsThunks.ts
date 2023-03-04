@@ -1,5 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {Product} from "../../types";
+import {Category, Product} from "../../types";
 import axiosApi from "../../axiosApi";
 
 export const fetchProducts = createAsyncThunk<Product[]>(
@@ -9,3 +9,12 @@ export const fetchProducts = createAsyncThunk<Product[]>(
     return response.data;
   }
 );
+
+export const fetchCategories = createAsyncThunk<Category[]>(
+  'products/fetchCategories',
+  async () => {
+    const response = await axiosApi.get<Category[]>('/categories');
+    return response.data;
+  }
+);
+
