@@ -38,17 +38,26 @@ productsRouter.post('/', auth, imagesUpload.single('image'), async (req, res, ne
   }
 });
 
-
 productsRouter.get('/', async (req, res) => {
   try {
     const queryCategory = req.query.category as string;
 
     if (queryCategory) {
-      const sortedProducts = await Product.find({category: queryCategory})
-        .populate({path: 'customer', select: ['displayUsername', 'phone']});
+      const sortedProducts = await Product.find({category: queryCategory}, '_id title price image');
       return res.send(sortedProducts);
     }
-    const products = await Product.find()
+    const products = await Product.find({}, '_id title price image');
+    return res.send(products);
+  } catch {
+    return res.sendStatus(500);
+  }
+});
+
+productsRouter.get('/:id', async (req, res) => {
+  try {
+    const productId = req.params.id;
+
+    const products = await Product.findById(productId)
       .populate({path: 'customer', select: ['displayUsername', 'phone']})
       .populate({path: 'category', select: 'title'});
     return res.send(products);
