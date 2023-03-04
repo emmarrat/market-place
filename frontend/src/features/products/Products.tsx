@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { selectCategories, selectProducts, selectProductsFetchLoading } from './productsSlice';
 import { fetchCategories, fetchProducts, fetchProductsByCategory } from './productsThunks';
-import { CircularProgress, Grid } from '@mui/material';
+import { CircularProgress, Grid, Typography } from '@mui/material';
 import ProductCard from './components/ProductCard';
 import { useParams } from 'react-router-dom';
 import CategoriesList from './components/CategoriesList';
@@ -24,8 +24,12 @@ const Products = () => {
     }
   }, [dispatch, id]);
 
+  const category = categories.find((category) => {
+    return category._id === id;
+  })
+
   return (
-    <>
+    <> <Typography variant="h5" mb={4} fontWeight="bold" textAlign="center">{category ? category.title + ':' : "All products:"}</Typography>
       <Grid container justifyContent="space-between">
         <Grid item container xs={12} md={2}>
           <CategoriesList categories={categories}/>
