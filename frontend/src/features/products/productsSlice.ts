@@ -1,7 +1,7 @@
 import { Category, FullProduct, Product, ValidationError } from '../../types';
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  createProduct,
+  createProduct, deleteProduct,
   fetchCategories,
   fetchOneProduct,
   fetchProducts,
@@ -15,6 +15,7 @@ export interface ProductsState {
   categories: Category[],
   productsFetchLoading: boolean;
   productCreatingLoading: boolean;
+  productDeletingLoading: false | string;
   validationError: ValidationError | null;
 }
 
@@ -24,6 +25,7 @@ const initialState: ProductsState = {
   categories: [],
   productsFetchLoading: false,
   productCreatingLoading: false,
+  productDeletingLoading: false,
   validationError: null,
 }
 
@@ -86,6 +88,15 @@ export const productsSlice = createSlice({
       state.validationError = error || null;
       state.productCreatingLoading = false;
     });
+    builder.addCase(deleteProduct.pending, (state, {meta: {arg: productId}}) => {
+      state.productDeletingLoading = productId;
+    });
+    builder.addCase(deleteProduct.fulfilled, (state) => {
+      state.productDeletingLoading = false;
+    });
+    builder.addCase(deleteProduct.rejected, (state) => {
+      state.productDeletingLoading = false;
+    });
   }
 });
 
@@ -95,6 +106,7 @@ export const selectProducts = (state: RootState) => state.products.items;
 export const selectOneProduct = (state: RootState) => state.products.oneItem;
 export const selectCategories = (state: RootState) => state.products.categories;
 export const selectProductsFetchLoading = (state: RootState) => state.products.productsFetchLoading;
-export const selectValidationError = (state: RootState) => state.products.validationError;
 export const selectProductCreatingLoading = (state: RootState) => state.products.productCreatingLoading;
+export const selectProductDeletingLoading = (state: RootState) => state.products.productDeletingLoading;
+export const selectValidationError = (state: RootState) => state.products.validationError;
 
