@@ -1,4 +1,5 @@
 ### Market Place with backend and frontend
+![market-place](https://user-images.githubusercontent.com/99384076/225580567-3363b857-edab-4e57-b8c8-5b3723d512a3.gif)
 
 ## Main features:
 - authorization | registration and login which works with backend
@@ -16,7 +17,9 @@ TypeScript, Node.js, Express.js, MongoDb + Mongoose, Multer, React, Axios, Redux
 ## For backend:
 If you have installed MongoDb:
 
-2.2. Install all necessary dependencies: ```npm i```
+2.1. Install all necessary dependencies: ```npm i```
+
+2.2. Update datebase: ```npm run seed```
 
 2.3. Start server: ```npm run dev```
 
