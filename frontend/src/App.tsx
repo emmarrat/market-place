@@ -16,7 +16,7 @@ const App = () => {
         <AppToolbar/>
       </header>
       <main>
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" sx={{paddingBottom: 5}}>
           <Routes>
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<Register/>}/>

@@ -31,7 +31,7 @@ const Products = () => {
   let content = (
     <>
       {products.map((product) => (
-        <Grid item width="33.333%" key={product._id}>
+        <Grid item xs={12} sm={6} md={4} key={product._id}>
           <ProductCard product={product}/>
         </Grid>
       ))}

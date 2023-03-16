@@ -23,7 +23,7 @@ const AppToolbar = () => {
       <Toolbar>
         <Grid container justifyContent="space-between" alignItems="center">
           <Typography variant="h6" component="div">
-            <Link to="/" sx={{display: 'flex', alignItems: 'center'}}>JS-17's market place
+            <Link to="/" sx={{display: 'flex', alignItems: 'center'}}>Emir's market place
               <div style={{
                 borderRadius: '50%',
                 width: '32px', height: '32px',
