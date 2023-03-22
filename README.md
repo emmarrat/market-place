@@ -19,7 +19,7 @@ If you have installed MongoDb:
 
 2.1. Install all necessary dependencies: ```npm i```
 
-2.2. Update datebase: ```npm run seed```
+2.2. Update database: ```npm run seed```
 
 2.3. Start server: ```npm run dev```
 
